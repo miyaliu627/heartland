@@ -1,8 +1,16 @@
 import React from 'react'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 const App = () => {
     return (
-        <div className="text-3xl font-bold underline text-red-500">App</div>
+        <main className=" bg-slate-300/20">
+            <Router>
+                <Routes>
+                    <Route path="/" element={'Landing'} />
+                    <Route path="/home" element={'Home'} />
+                </Routes>
+            </Router>
+        </main>
     )
 }
 

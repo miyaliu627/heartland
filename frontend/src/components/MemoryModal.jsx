@@ -1,14 +1,28 @@
 import "./MemoryModal.css"
 
-export default function MemoryModal({displayModal, closeModalFunc})
-{
-    return (
-        <>
-            <div className={`Overlay ${displayModal ? 'Show' : ''}`}
-                 onClick={() => {closeModalFunc()}} />
-            <div className={`Modal modal-content ${displayModal ? 'Show' : ''}`}>
-                testing testing 123
+import React, { useState } from 'react';
+
+const Modal = ({ isOpen, onClose, title, image, text }) => {
+  const handleModalClose = () => {
+    onClose();
+  };
+
+  return (
+    <div>  
+        <div className={`modal-overlay ${isOpen ? 'open' : ''}`} onClick={handleModalClose}>
+            <div className="modal-content" onClick={e => e.stopPropagation()}>
+                <h3>{title}</h3>
+                <br/>
+                {
+                    (image != null &&
+                    <img src={image}></img>)
+                }
+                <br/>
+                <p>{text}</p>
             </div>
-        </>
-    );
-}   
+        </div>
+    </div>
+  );
+};
+
+export default Modal;

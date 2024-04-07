@@ -26,7 +26,7 @@ function AddMemory({isOpen,onClose}) {
     formData.append('entryDetail', details);
     formData.append('memoryDate', date ? date.toISOString() : ''); // Assuming `date` is a Date object or similar
     const token = await getIdToken(user);
-    formData.append('userId', token);
+    formData.append('userId', user.uid);
     formData.append('islandId', selectedCategoryId); 
     if (image) formData.append('artifact', image); // 'artifact' is the field for the image file
   

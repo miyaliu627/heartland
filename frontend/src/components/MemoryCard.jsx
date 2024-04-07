@@ -8,7 +8,7 @@ function MemoryCard({ memoryIndex, x, y, handleOpen}) {
 
   return (
     <div>
-      <button onClick={() => handleOpen(memoryIndex)} 
+      <button onClick={() => {handleOpen(memoryIndex); console.log}} 
               className="absolute transitiona-all bg-transparent hover:scale-110 transition-transform duration-300 rounded-md"
               style={{ top: `${y}px`, left: `${x}px`, width: '80px' }}>
         <img src={yellowGif} alt="memory card" className="object-cover object-center w-full h-full rounded-md" />

@@ -24,8 +24,10 @@ function MemoryData(title, image, text)
 
 export default function IslandPopup({memories})
 { 
-    const xs = [200, 430];
-    const ys = [120, 260];
+    const xs = [200, 430, 200, 560];
+    const ys = [120, 260, 400, 77];
+
+    console.log(memories)
 
     const [displayModal, setDisplayModal] = useState(-1);
 
@@ -35,18 +37,30 @@ export default function IslandPopup({memories})
         console.log('Memory archived');
       };
 
-    const memoryCards = [];
+    // const memoryCards = [];
 
-    for(let i = 0; i < memories.length; i++)
-    {
-        memoryCards.push(<MemoryCard 
-                                    key={i}
-                                    index={i}
-                                    x={xs[i]}
-                                    y={ys[i]}
-                                    handleOpen={(index) => {setDisplayModal(i); console.log(i);}}/>);
-        
-    }
+    // for(let i = 0; i < memories.length; i++)
+    // {
+    //     memoryCards.push(<MemoryCard 
+    //                                 key={i}
+    //                                 index={i}
+    //                                 x={xs[i]}
+    //                                 y={ys[i]}
+    //                                 handleOpen={() => {setDisplayModal(i); console.log(i);}}/>);
+    //     console.log(memoryCards);  
+    // }
+
+    const memoryCards = memories.map((memory, i) => (
+        <MemoryCard 
+            key={i}
+            index={i}
+            x={xs[i % xs.length]}
+            y={ys[i % ys.length]}
+            handleOpen={() => setDisplayModal(i)}
+        />
+    ));
+    
+    // console.log(memoryCards[0].props); // This should show the populated array
 
     return (
         <>

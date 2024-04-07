@@ -25,7 +25,7 @@ export default function IslandPopup()
     const memoryOrbs = [new OrbData(1, 200, 200), new OrbData(3, 300, 90), new OrbData(2, 430, 370)];
 
     const testTitle = "My Title";
-    const testImage = "https://cdn.britannica.com/70/234870-050-D4D024BB/Orange-colored-cat-yawns-displaying-teeth.jpg";
+    const testImage = null;
     const testText = 
     `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -45,7 +45,7 @@ export default function IslandPopup()
         <>
         <div class="container">
     <div class="large-image-container">
-        <img src="https://i.pinimg.com/originals/7d/12/60/7d1260bff315dff2b41a0c2fc7d6fcd0.gif" alt="Large Image" class="large-image"></img>
+        <img src="./island1.png" alt="Large Image" class="large-image"></img>
         </div>
         {
             memoryOrbs.map((orb) => 

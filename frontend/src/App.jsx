@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { Home, Landing } from './pages';
 import { useAuth } from './AuthContext'; // Adjust the import path as necessary
+import IslandMapView from './components/IslandMapView';
 
 const App = () => {
     const { user, loading } = useAuth();
@@ -10,9 +11,16 @@ const App = () => {
         return <div>Loading...</div>; // Or some loading indicator
       }
 
+    //const memoryOrbs = [OrbData(1, 80, 80)];
+
+
     return (
-        // <main className="bg-slate-300/20">
-        <main>
+        <IslandMapView/>
+    );
+
+/*
+    return (
+        <main className=" bg-slate-300/20">
             <Router>
                 <Routes>
                     <Route path="/" element={<Landing />} />
@@ -23,7 +31,8 @@ const App = () => {
                 </Routes>
             </Router>
         </main>
-    );
+    )*/
+    
 }
 
 export default App;

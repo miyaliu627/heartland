@@ -1,0 +1,18 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    position: relative;
+}
+.large-image-container {
+    display: inline-block;
+    overflow: hidden;
+}
+.large-image {
+    display: block;
+    width: 600px;
+}

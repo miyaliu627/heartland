@@ -13,6 +13,8 @@ class OrbData
     }
 }*/
 
+import { Home, Landing } from './pages';
+
 const App = () => {
 
     //const memoryOrbs = [OrbData(1, 80, 80)];
@@ -25,8 +27,8 @@ const App = () => {
         <main className=" bg-slate-300/20">
             <Router>
                 <Routes>
-                    <Route path="/" element={'Landing'} />
-                    <Route path="/home" element={'Home'} />
+                    <Route path="/" element={<Landing />} />
+                    <Route path="/home" element={<Home />} />
                 </Routes>
             </Router>
         </main>

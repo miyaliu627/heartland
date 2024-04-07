@@ -16,22 +16,16 @@ function SelectCategory({ setIsDialogOpen, setSelectedCategoryId }) {
 
   return (
     <div className="relative">
-      <button
-        className="fixed bottom-8 right-8 bg-lime-500 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg z-20"
-        onClick={handleAddMemoryClick}
-      >
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path d="M12 4v16m8-8H4"></path>
-        </svg>
-      </button>
+    <button
+      className="fixed bottom-8 right-8 bg-lime-500 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg z-20"
+      onClick={handleAddMemoryClick}
+    >
+      <img
+        src="src/assets/plussign.png"
+        alt="Add Memory"
+        className="w-6 h-auto"
+      />
+    </button>
 
       {isPopupMenuOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50 flex justify-center items-center">

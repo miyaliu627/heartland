@@ -1,9 +1,10 @@
-export default function MemoryOrb({x, y})
+export default function MemoryOrb({key, x, y})
 {
     return (
-        <img    src="https://cdn-icons-png.freepik.com/512/8239/8239169.png"
-                width="100px"
+        <img    key={key}
+                src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS4xUj-NDnoBSVGCWbLx5tNSwEOdYEX8E1786dErjlUujqp3ZnV"
+                width="70px"
                 alt="map pin"
-                class="absolute bottom-0 left-0 transition duration-500 hover:scale-125 flex justify-center items-center"></img>
+                class={`absolute left-${x} bottom-${y} bg-gray-300 hover:scale-125 transition-transform duration-300`}></img>
     );
 }

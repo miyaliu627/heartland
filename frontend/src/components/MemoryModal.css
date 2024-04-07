@@ -71,3 +71,8 @@
     color: black; /* Equivalent to text-black */
     overflow: auto;
   }
+
+  .modal-archive
+  {
+    margin-bottom: 0px;
+  }

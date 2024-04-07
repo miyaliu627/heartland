@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Home, Landing } from './pages';
 import { useAuth } from './AuthContext'; // Adjust the import path as necessary
 import IslandMapView from './components/IslandMapView';
+import MemoryModal from "./components/MemoryModal"
 
 const App = () => {
     const { user, loading } = useAuth();
@@ -11,7 +12,11 @@ const App = () => {
         return <div>Loading...</div>; // Or some loading indicator
       }
 
+      return (
+        <MemoryModal/>
+      );
 
+/*
     return (
         <main className=" bg-slate-300/20">
             <Router>
@@ -24,7 +29,7 @@ const App = () => {
                 </Routes>
             </Router>
         </main>
-    )
+    )*/
     
 }
 

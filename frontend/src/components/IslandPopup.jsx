@@ -32,10 +32,6 @@ export default function IslandPopup({memories})
     const [displayModal, setDisplayModal] = useState(-1);
 
     
-      const handleArchive = () => {
-        // Handle archive action here
-        console.log('Memory archived');
-      };
 
     // const memoryCards = [];
 
@@ -59,6 +55,45 @@ export default function IslandPopup({memories})
             handleOpen={() => setDisplayModal(i)}
         />
     ));
+
+    
+
+    function handleArchiveClicked(memId)
+    {
+        console.log("what");
+        useEffect(() => {
+            const archiveMemory = async () => {
+                const auth = getAuth();
+                const user = auth.currentUser;
+    
+                const token = await getIdToken(user);
+                const requestOptions = {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        memoryId: memId
+                    }),
+                };
+                //console.log(requestOptions);
+    
+                try {
+                    const response = await fetch('http://127.0.0.1:5000/archiveMemory', requestOptions);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    setMemories(data); // Assuming the response is the array of memories
+                } catch (error) {
+                    console.error("Error fetching memories:", error);
+                }
+            };
+    
+            fetchMemories();
+            //console.log(memories);
+        }, []); // Empty dependency array means this effect runs once on mount
+    }
     
     // console.log(memoryCards[0].props); // This should show the populated array
 
@@ -78,7 +113,10 @@ export default function IslandPopup({memories})
                     title={memories[displayModal].memory_name} 
                     date={memories[displayModal].memory_date}
                     image={memories[displayModal].artifact_url} 
-                    text={memories[displayModal].entry_detail}/>}
+                    text={memories[displayModal].entry_detail}
+                    id={memories[displayModal].memory_id}
+                    handleArchive={(num) => handleArchiveClicked(num)}
+                    />}
             </div>
             </div>
         </>

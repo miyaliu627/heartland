@@ -4,6 +4,8 @@ import "./IslandPopup.css"
 import { useState } from "react";
 import MemoryOrb from "./MemoryOrb";
 import Modal from "./MemoryModal";
+import MemoryCard from "./MemoryCard";
+import NewMemoryModal from "./NewMemoryModal";
 
 
 function OrbData(input_key, input_x, input_y)
@@ -20,24 +22,30 @@ function MemoryData(title, image, text)
     this.text = text;
 }
 
-export default function IslandPopup()
+export default function IslandPopup({memories})
 { 
-    const memoryOrbs = [new OrbData(1, 200, 200), new OrbData(3, 300, 90), new OrbData(2, 430, 370)];
+    const xs = [200, 430];
+    const ys = [120, 260];
 
-    const testTitle = "My Title";
-    const testImage = null;
-    const testText = 
-    `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    `;
+    const [displayModal, setDisplayModal] = useState(-1);
 
+    
+      const handleArchive = () => {
+        // Handle archive action here
+        console.log('Memory archived');
+      };
 
-    const [shouldDisplayModal, setShouldDisplayModal] = useState(false);
+    const memoryCards = [];
 
-    function closeModal()
+    for(let i = 0; i < memories.length; i++)
     {
-        setShouldDisplayModal(false);
+        memoryCards.push(<MemoryCard 
+                                    key={i}
+                                    index={i}
+                                    x={xs[i]}
+                                    y={ys[i]}
+                                    handleOpen={(index) => {setDisplayModal(i); console.log(i);}}/>);
+        
     }
 
     return (
@@ -46,16 +54,40 @@ export default function IslandPopup()
     <div class="large-image-container">
         <img src="island1.png" alt="Large Image" class="large-image"></img>
         </div>
-        {
-            memoryOrbs.map((orb) => 
-            {
-                return <MemoryOrb key={orb.key} x={orb.x} y={orb.y} detectClicked={() => setShouldDisplayModal(true)}/>
-            })
-        }
+        
+        {memoryCards}
+        
         <div class="absolute">
-            <Modal isOpen={shouldDisplayModal} onClose={() => setShouldDisplayModal(false)} title={testTitle} image={testImage} text={testText}/>
-        </div>
-    </div>
+            {displayModal != -1 && 
+            <Modal  isOpen={displayModal} 
+                    onClose={() => setDisplayModal(-1)} 
+                    title={memories[displayModal].memory_name} 
+                    date={memories[displayModal].memory_date}
+                    image={memories[displayModal].artifact_url} 
+                    text={memories[displayModal].entry_detail}/>}
+            </div>
+            </div>
         </>
     );
 }
+
+/*
+
+{(displayModal != -1 && <NewMemoryModal   title={memories[0].memory_name} 
+                                                    date={memories[0].memory_date} 
+                                                    imageUrl={memories[0].artifact_url} 
+                                                    details={memories[0].entry_detail} 
+                                                    handleClose={() => setDisplayModal(-1)} 
+                                                    handleArchive={handleArchive}
+            />)}
+
+<div class="absolute">
+            {displayModal != -1 && 
+            <Modal  isOpen={displayModal} 
+                    onClose={() => setDisplayModal(-1)} 
+                    title={memories[displayModal].memory_name} 
+                    image={memories[displayModal].artifact_url} 
+                    text={memories[displayModal].entry_detail}/>}
+        </div>
+
+        */

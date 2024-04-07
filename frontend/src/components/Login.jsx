@@ -37,7 +37,7 @@ export default function Login() {
 
   return (
     <button onClick={handleLogin}>
-      {user ? 'Go to Home' : 'Log In with Google'}
+      {user ? 'Go to Home' : 'Start Your Heartland'}
     </button>
   );
 }

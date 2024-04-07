@@ -180,3 +180,15 @@ body:has(.card[data-color="green"]:hover) {
     box-shadow: 0.6vmin 0.6vmin #fff, 1vmin 1vmin #d2e4ff, 1vmin 1vmin #d2e4ff,
         0.65vmin 1vmin #d2e4ff, 1vmin 0.65vmin #d2e4ff;
 }
+
+.landing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* This assumes you want the content vertically centered in the viewport */
+  }
+  
+  .heart-animation {
+    margin-bottom: 20px; /* Adjust based on your preference */
+  }

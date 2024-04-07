@@ -16,8 +16,6 @@ export default function IslandMapView()
     //output of a hypothetical GetIsland request for island 1
     const memories = jsonData;
 
-    const 
-
     return (
         <>
             <IslandPopup memories={memories}/>

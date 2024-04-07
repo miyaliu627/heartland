@@ -7,7 +7,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { getAuth, getIdToken } from "firebase/auth";
 
 
-function AddMemory() {
+function AddMemory({isOpen,onClose}) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
@@ -48,7 +48,8 @@ function AddMemory() {
       // Handle success
       console.log("Memory created successfully");
       setIsDialogOpen(false); // Assuming you use this state to close a dialog or form
-  
+      onClose();
+
       // Optionally, clear the form fields or provide further user feedback
       setTitle('');
       setDetails('');
@@ -68,24 +69,22 @@ function AddMemory() {
   };
 
   const handleDialogOpen = (isOpen, categoryId) => {
-    setIsDialogOpen(isOpen);
+    setSelectedCategoryId(categoryId);
   };
 
   return (
-    <div className="relative">
-      
-      < SelectCategory setIsDialogOpen = {handleDialogOpen} setSelectedCategoryId = {setSelectedCategoryId}/>
-
-      {/* Dialog Overlay */}
-      {isDialogOpen && ( 
+    <div className={`fixed top-0 left-0 w-full h-full bg-black ${isOpen ? 'bg-opacity-50' : 'bg-opacity-0'} z-20 flex justify-center items-center`}>
+    <SelectCategory setIsDialogOpen={setIsDialogOpen} setSelectedCategoryId ={setSelectedCategoryId}/>
+    {isDialogOpen && (
+      <div className="fixed top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50 flex justify-center items-center">
       <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 bg-orange-100 dark:text-gray-800">
-      <div className="flex flex-col justify-between">
-        <div className="space-y-2">
-          <h2 className="text-4xl font-bold leading-tight lg:text-5xl">Add Memory</h2>
-          <div className="dark:text-gray-600">Record your memory here.</div>
-        </div>
-        {image && (
-          <img src={URL.createObjectURL(image)} alt="Memory Image" className="p-6 w-full h-auto" />
+        <div className="flex flex-col justify-between">
+          <div className="space-y-2">
+            <h2 className="text-4xl font-bold leading-tight lg:text-5xl">Add Memory</h2>
+            <div className="dark:text-gray-600">Record your memory here.</div>
+          </div>
+         {image && (
+                <img src={URL.createObjectURL(image)} alt="Memory Image" className="p-6 max-w-full max-h-96 w-full h-auto" />
         )}
       </div>
       <form noValidate="" className="space-y-6">
@@ -127,6 +126,7 @@ function AddMemory() {
         </button>
 
       </form>
+    </div>
     </div>
       )}
     </div>

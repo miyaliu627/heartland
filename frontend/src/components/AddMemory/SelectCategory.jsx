@@ -17,10 +17,20 @@ function SelectCategory({ setIsDialogOpen, setSelectedCategoryId }) {
   return (
     <div className="relative">
       <button
-        className="px-4 py-2 bg-blue-500 text-white rounded shadow hover:bg-blue-600"
+        className="fixed bottom-8 right-8 bg-lime-500 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg z-20"
         onClick={handleAddMemoryClick}
       >
-        Add Memory
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M12 4v16m8-8H4"></path>
+        </svg>
       </button>
 
       {isPopupMenuOpen && (

@@ -5,10 +5,12 @@ import Popups from '../components/Popups';
 import Island from '../models/Island';
 import Sky from '../models/Sky';
 import Logout from '../components/Logout';
+import AddMemory from '../components/AddMemory/AddMemory';
 
 const Home = () => {
     const [isRotating, setIsRotating] = useState(false);
     const [currentStage, setCurrentStage] = useState(1);
+    const [isOpen,onClose] = useState(false);
 
     const adjustIslandForScreenSize = () => {
         let screenScale = null;
@@ -31,6 +33,7 @@ const Home = () => {
             <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
                 {currentStage && <Popups currentStage={currentStage} />}
             </div>
+            <AddMemory isOpen ={isOpen} onClose = {onClose}/>
             <Logout />
             <Canvas
                 className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}

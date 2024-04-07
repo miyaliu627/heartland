@@ -4,6 +4,7 @@ import Loader from '../components/Loader'
 
 import Island from '../models/Island';
 import Sky from '../models/Sky';
+import Logout from '../components/Logout';
 
 
 const Home = () => {
@@ -28,6 +29,7 @@ const Home = () => {
 
     return (
         <section className="w-full h-screen relative">
+            <Logout />
             <Canvas
                 className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
                 camera={{ near: 0.1, far: 1000 }}

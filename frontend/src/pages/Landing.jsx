@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Login from '/src/components/Login.jsx';
 
 function Landing() {
   return (
     <div>
-      Landing
+      <Login />
     </div>
   )
 }

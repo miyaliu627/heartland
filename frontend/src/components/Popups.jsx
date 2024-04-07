@@ -33,7 +33,7 @@ const Popups = ({ currentStage }) => {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
-                    "Welcome to the Education/Career Island!"
+                    Welcome to the Education/Career Island!
                 </p>
                 <button className='neo-brutalism-white neo-btn'>
                     Enter Island
@@ -47,7 +47,7 @@ const Popups = ({ currentStage }) => {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
-                    "Welcome to the Community Island!"
+                    Welcome to the Community Island!
                 </p>
                 <button className='neo-brutalism-white neo-btn'>
                     Enter Island

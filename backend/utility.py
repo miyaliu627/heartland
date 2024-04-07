@@ -37,9 +37,9 @@ def upload(file_stream, artifact_filename):
     
         
 
-def createMemory(user_id, island_name, memory_name, memory_date, artifact_url, entry_detail):
-    res=db.executeQuery("""insert into memories(userId, islandName, memoryName, memoryDate, artifactUrl, entryDetail) 
-                              values({},{},'{}','{}','{}','{}',{},{})""".format(user_id, island_name, memory_name, memory_date, artifact_url, entry_detail))
+def createMemory(user_id, island_name, memory_name, memory_date, entry_detail, artifact_url=''):
+    res=db.executeQuery("""insert into memories(user_id, island_name, memory_name, memory_date, artifact_url, entry_detail) 
+                              values({},'{}','{}','{}','{}','{}')""".format(user_id, island_name, memory_name, memory_date, artifact_url, entry_detail))
     return res
 
 

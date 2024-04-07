@@ -36,6 +36,15 @@ def upload(file_stream, artifact_filename):
         print("duplicate file?")
     
         
+def checkMemoryCount(user_id, island_name):
+    query = """
+        SELECT COUNT(*) FROM memories
+        WHERE user_id = '{}' AND island_name = '{}' AND archived = FALSE;
+    """.format(user_id, island_name)
+
+    result = db.getQuery(query)
+    memory_count = result[0][0]  # fetch the count from the result
+    return memory_count < 10
 
 def createMemory(user_id, island_name, memory_name, memory_date, entry_detail, artifact_url=''):
     res=db.executeQuery("""insert into memories(user_id, island_name, memory_name, memory_date, artifact_url, entry_detail) 

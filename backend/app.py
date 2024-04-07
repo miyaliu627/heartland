@@ -20,6 +20,9 @@ def createMemory():
     memory_date = data['memoryDate']
     entry_detail = data['entryDetail']
     
+    # Check if user already has 10 memories for the island
+    if not utility.checkMemoryCount(user_id, island_name):
+        return json.dumps({"error": "Memory limit reached for this island."}), 400
 
     # Handling file upload
     artifact = request.files['artifact']

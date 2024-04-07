@@ -4,15 +4,15 @@ import { arrow } from '../assets/icons';
 const Popups = ({ currentStage }) => {
     if (currentStage === 1)
         return (
-            <div className='info-box'>
-                <p className='font-medium sm:text-xl text-center'>
+            <div className='font-medium sm:text-xl text-center neo-brutalism-blue py-4 px-8 text-white mx-5'>
+                <h1 >
                     Welcome to Heartland
+                </h1>
+                <p>
+                    Scroll to start your journey!
                 </p>
-                <button className='neo-brutalism-white neo-btn'>
-                    Scroll
-                    <img src={arrow} alt='arrow' className='w-3 h-3 object-contain' />
-                </button>
             </div>
+
         );
 
     if (currentStage === 2)

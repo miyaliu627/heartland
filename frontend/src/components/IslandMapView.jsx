@@ -17,40 +17,48 @@ function Memory(artifact_url, entry_detail, memory_date, memory_id, memory_name)
 export default function IslandMapView({islandId}) {
     const [memories, setMemories] = useState([]);
 
-    console.log(islandId)
     useEffect(() => {
         const fetchMemories = async () => {
             const auth = getAuth();
             const user = auth.currentUser;
 
-            const token = await getIdToken(user);
+            // Choose the API endpoint and prepare the body accordingly
+            let apiUrl;
+            let body;
+            if (islandId === 6) {
+                apiUrl = 'http://127.0.0.1:5000/getArchived';
+                // For /getArchived, we only need userId
+                body = JSON.stringify({ userId: user.uid });
+            } else {
+                apiUrl = 'http://127.0.0.1:5000/getIsland';
+                // For /getIsland, we need both userId and islandId
+                body = JSON.stringify({ userId: user.uid, islandId: islandId });
+            }
+
             const requestOptions = {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({
-                    userId: user.uid, // Use the user's UID as userId
-                    islandId: islandId
-                }),
+                body: body,
             };
-            //console.log(requestOptions);
 
             try {
-                const response = await fetch('http://127.0.0.1:5000/getIsland', requestOptions);
+                const response = await fetch(apiUrl, requestOptions);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                setMemories(data); // Assuming the response is the array of memories
+                setMemories(data); // Update the state with the fetched memories
             } catch (error) {
                 console.error("Error fetching memories:", error);
             }
         };
 
+       
         fetchMemories();
-        //console.log(memories);
-    }, []); // Empty dependency array means this effect runs once on mount
+
+    }, [islandId]); // This effect runs whenever islandId changes
 
     return (
         <div className="island">

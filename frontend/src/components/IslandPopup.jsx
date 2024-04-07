@@ -6,6 +6,8 @@ import MemoryOrb from "./MemoryOrb";
 import Modal from "./MemoryModal";
 import MemoryCard from "./MemoryCard";
 import NewMemoryModal from "./NewMemoryModal";
+import { useEffect } from "react";
+
 
 
 function OrbData(input_key, input_x, input_y)
@@ -37,18 +39,6 @@ export default function IslandPopup({memories})
         console.log('Memory archived');
       };
 
-    // const memoryCards = [];
-
-    // for(let i = 0; i < memories.length; i++)
-    // {
-    //     memoryCards.push(<MemoryCard 
-    //                                 key={i}
-    //                                 index={i}
-    //                                 x={xs[i]}
-    //                                 y={ys[i]}
-    //                                 handleOpen={() => {setDisplayModal(i); console.log(i);}}/>);
-    //     console.log(memoryCards);  
-    // }
 
     const memoryCards = memories.map((memory, i) => (
         <MemoryCard 

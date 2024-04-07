@@ -14,7 +14,7 @@ function Memory(artifact_url, entry_detail, memory_date, memory_id, memory_name)
 }
 
 
-export default function IslandMapView({islandId}) {
+export default function IslandMapView({islandId, islandImage}) {
     const [memories, setMemories] = useState([]);
 
     console.log(islandId)
@@ -54,7 +54,7 @@ export default function IslandMapView({islandId}) {
 
     return (
         <div className="island">
-            <IslandPopup memories={memories}/>
+            <IslandPopup memories={memories} islandImage={islandImage}/>
         </div>
     );
 }

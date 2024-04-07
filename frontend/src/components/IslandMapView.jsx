@@ -14,10 +14,10 @@ function Memory(artifact_url, entry_detail, memory_date, memory_id, memory_name)
 }
 
 
-export default function IslandMapView() {
+export default function IslandMapView({islandId}) {
     const [memories, setMemories] = useState([]);
-    const islandId = 1; // Assuming this is determined elsewhere in your app
 
+    console.log(islandId)
     useEffect(() => {
         const fetchMemories = async () => {
             const auth = getAuth();

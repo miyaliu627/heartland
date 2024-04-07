@@ -6,6 +6,7 @@ import Island from '../models/Island';
 import Sky from '../models/Sky';
 import Logout from '../components/Logout';
 import AddMemory from '../components/AddMemory/AddMemory';
+import IslandMapView from '../components/IslandMapView';
 
 const Home = () => {
     const [isRotating, setIsRotating] = useState(false);
@@ -29,16 +30,22 @@ const Home = () => {
     const [islandScale, islandPosition, islandRotation] = adjustIslandForScreenSize();
 
     return (
-        <section className="w-full h-screen relative">
-            <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
+        <div className="w-full h-screen relative">
+            <div className="absolute top-28 left-0 right-0 z-20 flex items-center justify-center">
                 {currentStage && <Popups currentStage={currentStage} />}
+                {/* <IslandMapView/> */}
             </div>
-            <AddMemory isOpen ={isOpen} onClose = {onClose}/>
+{/*             
+            
+            <div className="absolute top-28 left-0 right-0 z-50 flex items-center justify-center">
+                <AddMemory isOpen ={isOpen} onClose = {onClose}/>
+            </div> */}
+            
             <Logout />
             <Canvas
                 className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursorg-grab'}`}
                 camera={{ near: 0.1, far: 1000 }}
-            >
+            >   
                 <Suspense fallback={<Loader />}>
                     <directionalLight position={[1, 1, 1]} intensity={2} />
                     <ambientLight intensity={0.5} />
@@ -57,7 +64,7 @@ const Home = () => {
                     />
                 </Suspense>
             </Canvas>
-        </section>
+        </div>
 
     )
 }

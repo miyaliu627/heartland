@@ -27,7 +27,7 @@ export default function IslandPopup({memories})
     const xs = [200, 430, 200, 560];
     const ys = [120, 260, 400, 77];
 
-    console.log(memories)
+    // console.log(memories)
 
     const [displayModal, setDisplayModal] = useState(-1);
 

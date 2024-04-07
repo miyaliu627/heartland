@@ -73,7 +73,7 @@ function AddMemory({isOpen,onClose}) {
   };
 
   return (
-    <div className={`fixed top-0 left-0 w-full h-full bg-black ${isOpen ? 'bg-opacity-50' : 'bg-opacity-0'} z-20 flex justify-center items-center`}>
+    <div className={`w-full h-full bg-black ${isOpen ? 'bg-opacity-50' : 'bg-opacity-0'} z-20 flex justify-center items-center`}>
     <SelectCategory setIsDialogOpen={setIsDialogOpen} setSelectedCategoryId ={setSelectedCategoryId}/>
     {isDialogOpen && (
       <div className="fixed top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50 flex justify-center items-center">

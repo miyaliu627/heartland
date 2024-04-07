@@ -1,91 +1,57 @@
-import React from 'react'
-import { arrow } from '../assets/icons';
+import React, { useState } from 'react';
+import arrow from '../assets/icons/arrow.svg'; // Correct import if needed
+import IslandMapView from './IslandMapView';
+import AddMemory from './AddMemory/AddMemory';
 
 const Popups = ({ currentStage }) => {
-    if (currentStage === 1)
-        return (
-            <div className='font-medium sm:text-xl text-center neo-brutalism-blue py-4 px-8 text-white mx-5'>
-                <h1 >
-                    Welcome to Heartland
-                </h1>
-                <p>
-                    Scroll to start your journey!
-                </p>
-            </div>
+    const [showIsland, setShowIsland] = useState(false);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    
+ 
+    const handleEnterIsland = () => {
+        console.log('Opening IslandMapView');
+        setShowIsland(true);
+    };
 
-        );
+    // Define welcome messages for each stage
+    const welcomeMessages = {
+        1: 'Welcome to Heartland',
+        2: 'Welcome to the Island of Community!',
+        3: 'Welcome to the Island of Growth!',
+        4: 'Welcome to the Island of Inspiration!',
+        5: 'Welcome to the Island of Accomplishment!',
+        6: 'Welcome to Archival Island!',
+    };
 
-    if (currentStage === 2)
-        return (
-            <div className='info-box'>
-                <p className='font-medium sm:text-xl text-center'>
-                    Welcome to the Island of Community!
-                </p>
-                <button className='neo-brutalism-white neo-btn'>
-                    Enter Island
-                    <img src={arrow} alt='arrow' className='w-3 h-3 object-contain' />
-                </button>
-            </div>
-        );
+    // Button text varies based on the stage
+    const buttonText = currentStage === 1 ? "Scroll" : 'Enter Island';
 
-    if (currentStage === 3) {
-        return (
-            <div className='info-box'>
-                <p className='font-medium sm:text-xl text-center'>
-                    Welcome to the Island of Growth!
-                </p>
-                <button className='neo-brutalism-white neo-btn'>
-                    Enter Island
-                    <img src={arrow} alt='arrow' className='w-3 h-3 object-contain' />
-                </button>
-            </div>
-        );
-    }
+    return (
+        <>
+            {!showIsland && (
+                <div className='info-box'>
+                    <p className='font-medium sm:text-xl text-center'>
+                        {welcomeMessages[currentStage]}
+                    </p>
+                    <button className='neo-brutalism-white neo-btn' onClick={handleEnterIsland}>
+                        {buttonText}
+                        <img src={arrow} alt='arrow' className='w-3 h-3 object-contain' />
+                    </button>
+                    <AddMemory isDialogOpen={isDialogOpen} setIsDialogOpen={isDialogOpen} />
+                </div>
+            )}
 
-    if (currentStage === 4) {
-        return (
-            <div className='info-box'>
-                <p className='font-medium sm:text-xl text-center'>
-                    Welcome to the Island of Inspiration!
-                </p>
-                <button className='neo-brutalism-white neo-btn'>
-                    Enter Island
-                    <img src={arrow} alt='arrow' className='w-3 h-3 object-contain' />
-                </button>
-            </div>
-        );
-    }
-
-    if (currentStage === 5) {
-        return (
-            <div className='info-box'>
-                <p className='font-medium sm:text-xl text-center'>
-                    Welcome to the Island of Accomplishment!
-                </p>
-                <button className='neo-brutalism-white neo-btn'>
-                    Enter Island
-                    <img src={arrow} alt='arrow' className='w-3 h-3 object-contain' />
-                </button>
-            </div>
-        );
-    }
-
-    if (currentStage === 6) {
-        return (
-            <div className='info-box'>
-                <p className='font-medium sm:text-xl text-center'>
-                    Welcome to the Archival Island!
-                </p>
-                <button className='neo-brutalism-white neo-btn'>
-                    Enter Island
-                    <img src={arrow} alt='arrow' className='w-3 h-3 object-contain' />
-                </button>
-            </div>
-        );
-    }
-
-    return null;
+            {showIsland && currentStage !== 0 && (
+                <>
+                    <IslandMapView islandId={currentStage}/>
+                    <button onClick={() => setShowIsland(false)} className='neo-brutalism-white neo-btn'>
+                        Close
+                    </button>
+                </>
+            )}
+            
+        </>
+    );
 };
 
-export default Popups
-
+export default Popups;

@@ -3,4 +3,4 @@ import App from './App';
 import './index.css';
 import IslandPopup from './components/IslandPopup';
 
-ReactDOM.createRoot(document.getElementById('root')).render(<IslandPopup />);
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);

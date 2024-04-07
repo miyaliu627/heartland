@@ -80,8 +80,8 @@ function AddMemory({isOpen,onClose}) {
       <div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 py-16 mx-auto rounded-lg md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 bg-orange-100 dark:text-gray-800">
         <div className="flex flex-col justify-between">
           <div className="space-y-2">
-            <h2 className="text-4xl font-bold leading-tight lg:text-5xl">Add Memory</h2>
-            <div className="dark:text-gray-600">Record your memory here.</div>
+            <h2 className="text-gray-600 text-4xl font-bold leading-tight lg:text-5xl">Add Memory</h2>
+            <div className="text-gray-600">Record your memory here.</div>
           </div>
          {image && (
                 <img src={URL.createObjectURL(image)} alt="Memory Image" className="p-6 max-w-full max-h-96 w-full h-auto" />
@@ -90,7 +90,7 @@ function AddMemory({isOpen,onClose}) {
       <form noValidate="" className="space-y-6">
         <div>
           <label htmlFor="name" className="text-sm">Memory Title</label>
-          <input type="text" placeholder="Enter memory title" className="w-full p-3 rounded dark:bg-gray-100 focus:outline-none focus:ring focus:ring-orange-500" value={title} onChange={(e) => setTitle(e.target.value)} />
+          <input type="text" placeholder="Enter memory title" className="text-gray-600 w-full p-3 rounded dark:bg-gray-100 focus:outline-none focus:ring focus:ring-orange-500" value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
         <div>
             <label htmlFor="date" className="text-sm focus:outline-none focus:ring focus:ring-orange-500"></label>
@@ -101,7 +101,7 @@ function AddMemory({isOpen,onClose}) {
         <div>
         <input
             type="file"
-            className="hidden"
+            className="hidden text-gray-600"
             accept="image/*"
             id="image" // Add an id to the input element
             onChange={handleImageChange}
@@ -115,7 +115,7 @@ function AddMemory({isOpen,onClose}) {
     </div>      
     <div>
           <label htmlFor="details" className="text-sm">Details</label>
-          <textarea rows="3" className="w-full p-3 rounded dark:bg-gray-100 focus:outline-none focus:ring focus:ring-orange-500" placeholder="Enter memory details" value={details} onChange={(e) => setDetails(e.target.value)} />
+          <textarea rows="3" className="w-full p-3 text-gray-600 rounded dark:bg-gray-100 focus:outline-none focus:ring focus:ring-orange-500" placeholder="Enter memory details" value={details} onChange={(e) => setDetails(e.target.value)} />
         </div>
         <button
         type="button"

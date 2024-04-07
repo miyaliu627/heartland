@@ -60,6 +60,22 @@ def getIsland():
     # Return the result as a JSON response
     return memories
 
+@app.route('/archiveMemory', methods=['POST'])
+def archive_memory():
+    # Extracting 'memory_id' from the POST request body
+    data = request.get_json()
+   
+    memory_id = data['memoryId']
+    
+    # Prepare the SQL query to update the 'archived' status
+    query = """
+        UPDATE memories
+        SET archived = TRUE
+        WHERE id = {};
+    """.format(memory_id)
+    
+    out = db.executeQuery(query)
+    return out
 
 if __name__ == '__main__':
     app.run(debug=True)

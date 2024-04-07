@@ -16,3 +16,4 @@ def getQueryDict(q):
 def executeQuery(q):
     cur.execute(q)
     conn.commit()
+    return "executed"

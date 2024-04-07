@@ -23,6 +23,14 @@ const Popups = ({ currentStage }) => {
         6: 'Welcome to Archival Island!',
     };
 
+    const islandImages = {
+        2: 'island1.png',
+        3: 'island2.png',
+        4: 'island3.png',
+        5: 'island4.png',
+        6: 'island5.png',
+    };
+
     // Button text varies based on the stage
     const buttonText = currentStage === 1 ? "Scroll" : 'Enter Island';
 
@@ -43,7 +51,7 @@ const Popups = ({ currentStage }) => {
 
             {showIsland && currentStage !== 0 && (
                 <>
-                    <IslandMapView islandId={currentStage}/>
+                    <IslandMapView islandId={currentStage} islandImage={islandImages[currentStage]}/>
                     <button onClick={() => setShowIsland(false)} className='neo-brutalism-white neo-btn'>
                         Close
                     </button>

@@ -24,7 +24,7 @@ function MemoryData(title, image, text)
     this.text = text;
 }
 
-export default function IslandPopup({memories})
+export default function IslandPopup({memories, islandImage})
 { 
     const xs = [200, 430, 200, 560];
     const ys = [120, 260, 400, 77];
@@ -56,7 +56,7 @@ export default function IslandPopup({memories})
         <>
         <div class="container">
     <div class="large-image-container">
-        <img src="island1.png" alt="Large Image" class="large-image"></img>
+        <img src={islandImage} alt="Large Image" class="large-image"></img>
         </div>
         
         {memoryCards}

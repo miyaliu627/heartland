@@ -4,6 +4,7 @@ import Loader from '../components/Loader'
 import Popups from '../components/Popups';
 import Island from '../models/Island';
 import Sky from '../models/Sky';
+import Logout from '../components/Logout';
 
 const Home = () => {
     const [isRotating, setIsRotating] = useState(false);
@@ -30,6 +31,7 @@ const Home = () => {
             <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
                 {currentStage && <Popups currentStage={currentStage} />}
             </div>
+            <Logout />
             <Canvas
                 className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
                 camera={{ near: 0.1, far: 1000 }}

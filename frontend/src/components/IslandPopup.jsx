@@ -68,7 +68,8 @@ export default function IslandPopup({memories, islandImage})
                     title={memories[displayModal].memory_name} 
                     date={memories[displayModal].memory_date}
                     image={memories[displayModal].artifact_url} 
-                    text={memories[displayModal].entry_detail}/>}
+                    text={memories[displayModal].entry_detail}
+                    memory_id={memories[displayModal].memory_id}/>}
             </div>
             </div>
         </>

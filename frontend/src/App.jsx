@@ -11,14 +11,7 @@ const App = () => {
         return <div>Loading...</div>; // Or some loading indicator
       }
 
-    //const memoryOrbs = [OrbData(1, 80, 80)];
 
-
-    return (
-        <IslandMapView/>
-    );
-
-/*
     return (
         <main className=" bg-slate-300/20">
             <Router>
@@ -31,7 +24,7 @@ const App = () => {
                 </Routes>
             </Router>
         </main>
-    )*/
+    )
     
 }
 

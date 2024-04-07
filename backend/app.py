@@ -77,5 +77,23 @@ def archive_memory():
     out = db.executeQuery(query)
     return out
 
+@app.route('/getArchived', methods=['POST'])
+def getArchived():
+    data = request.get_json()
+    print(data)
+    user_id = data['userId']
+    
+    # Query the database to get all memories for the given user ID and island name
+    # The query structure will depend on your database schema
+    query = """
+    SELECT id as memory_id, memory_name, memory_date, artifact_url, entry_detail
+        FROM memories
+        WHERE user_id = '{}' AND archived = TRUE
+    """.format(user_id)
+    memories = db.getQueryDict(query)
+
+    # Return the result as a JSON response
+    return memories
+
 if __name__ == '__main__':
     app.run(debug=True)

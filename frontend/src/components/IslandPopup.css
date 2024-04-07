@@ -1,11 +1,18 @@
-.container img {
-    object-fit: contain;
-    background-color: orange;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
-
-.relative {
+.container {
     position: relative;
-  }
-  .absolute {
-    position: absolute;
-  }
+}
+.large-image-container {
+    display: inline-block;
+    overflow: hidden;
+}
+.large-image {
+    display: block;
+    width: 800px;
+}

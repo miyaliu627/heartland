@@ -1,0 +1,5 @@
+.small-image {
+    position: absolute;
+    width: 70px;    
+    z-index: 1; /* ensure small image is on top */
+}

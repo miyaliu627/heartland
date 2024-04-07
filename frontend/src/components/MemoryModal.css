@@ -3,18 +3,27 @@
     bottom: -150vh;
     background-color: #fff;
     width: 800px;
-    height:400px;
+    height:550px;
     left: 0;
     padding: 0 12px 12px;
-    transition: bottom 0.3s ease-out;
+    transition: bottom 0.5s ease-out;
     z-index: 10;
     overflow: auto; /* Enable scroll if needed */
     border-radius: 10px;
 }
 
 .Modal.Show {
-    bottom:0;
+    bottom:50px;
 }
+
+.modal-content {
+    background-color: #fff; /* White background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Drop shadow */
+    max-width: 100%; /* Maximum width of the modal */
+    text-align: center; /* Center content */
+  }
 
 .Overlay {
     background-color: rgba(0, 0, 0, 0.55);

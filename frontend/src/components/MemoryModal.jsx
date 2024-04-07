@@ -6,7 +6,9 @@ export default function MemoryModal({displayModal, closeModalFunc})
         <>
             <div className={`Overlay ${displayModal ? 'Show' : ''}`}
                  onClick={() => {closeModalFunc()}} />
-            <div className={`Modal ${displayModal ? 'Show' : ''}`}>...modal content</div>
+            <div className={`Modal modal-content ${displayModal ? 'Show' : ''}`}>
+                testing testing 123
+            </div>
         </>
     );
 }   

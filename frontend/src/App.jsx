@@ -18,11 +18,12 @@ const App = () => {
 
     //const memoryOrbs = [OrbData(1, 80, 80)];
 
-/*
+
     return (
         <IslandPopup/>
     );
-*/
+
+/*
     return (
         <main className=" bg-slate-300/20">
             <Router>
@@ -32,7 +33,7 @@ const App = () => {
                 </Routes>
             </Router>
         </main>
-    )
+    )*/
     
 }
 

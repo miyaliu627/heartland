@@ -1,0 +1,11 @@
+.container img {
+    object-fit: contain;
+    background-color: orange;
+}
+
+.relative {
+    position: relative;
+  }
+  .absolute {
+    position: absolute;
+  }

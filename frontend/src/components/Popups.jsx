@@ -19,7 +19,7 @@ const Popups = ({ currentStage }) => {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
-                    Welcome to Companion Island!
+                    Welcome to the Island of Community!
                 </p>
                 <button className='neo-brutalism-white neo-btn'>
                     Enter Island
@@ -32,7 +32,7 @@ const Popups = ({ currentStage }) => {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
-                    Welcome to the Family/Relationships Island!
+                    Welcome to the Island of Growth!
                 </p>
                 <button className='neo-brutalism-white neo-btn'>
                     Enter Island
@@ -46,7 +46,7 @@ const Popups = ({ currentStage }) => {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
-                    Welcome to the Education/Career Island!
+                    Welcome to the Island of Inspiration!
                 </p>
                 <button className='neo-brutalism-white neo-btn'>
                     Enter Island
@@ -60,7 +60,7 @@ const Popups = ({ currentStage }) => {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
-                    Welcome to the Community Island!
+                    Welcome to the Island of Accomplishment!
                 </p>
                 <button className='neo-brutalism-white neo-btn'>
                     Enter Island
@@ -74,7 +74,7 @@ const Popups = ({ currentStage }) => {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
-                    Welcome to the Archive Island!
+                    Welcome to Archive Island!
                 </p>
                 <button className='neo-brutalism-white neo-btn'>
                     Enter Island

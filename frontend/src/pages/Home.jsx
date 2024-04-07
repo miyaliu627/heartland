@@ -14,7 +14,7 @@ const Home = () => {
 
     const adjustIslandForScreenSize = () => {
         let screenScale = null;
-        let screenPosition = [0, -6.5, -43];
+        let screenPosition = [0, -7.5, -54];
         let rotation = [0.1, 4.7, 0];
 
         if (window.innerWidth < 768) {
@@ -36,7 +36,7 @@ const Home = () => {
             <AddMemory isOpen ={isOpen} onClose = {onClose}/>
             <Logout />
             <Canvas
-                className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursor-grab'}`}
+                className={`w-full h-screen bg-transparent ${isRotating ? 'cursor-grabbing' : 'cursorg-grab'}`}
                 camera={{ near: 0.1, far: 1000 }}
             >
                 <Suspense fallback={<Loader />}>

@@ -15,13 +15,13 @@ def home():
 def createMemory():
     data = request.form
     user_id = data['userId']
-    island_name = data['islandName']
+    island_id = data['islandId']
     memory_name = data['memoryName']
     memory_date = data['memoryDate']
     entry_detail = data['entryDetail']
     
     # Check if user already has 10 memories for the island
-    if not utility.checkMemoryCount(user_id, island_name):
+    if not utility.checkMemoryCount(user_id, island_id):
         return json.dumps({"error": "Memory limit reached for this island."}), 400
 
     # Handling file upload
@@ -33,13 +33,13 @@ def createMemory():
         artifact_url = utility.upload(artifact, artifact_filename)
         
         if artifact_url:
-            out = utility.createMemory(user_id, island_name, memory_name, memory_date, entry_detail, artifact_url)
+            out = utility.createMemory(user_id, island_id, memory_name, memory_date, entry_detail, artifact_url)
             return json.dumps(out, default=str)
         else:
             return json.dumps({"error": "Failed to upload artifact."}), 400
     
     #if there is no artifact
-    out = utility.createMemory(user_id, island_name, memory_name, memory_date, entry_detail)
+    out = utility.createMemory(user_id, island_id, memory_name, memory_date, entry_detail)
     return json.dumps(out, default=str)
 
 
@@ -49,15 +49,15 @@ def getIsland():
     data = request.get_json()
     print(data)
     user_id = data['userId']
-    island_name = data['islandName']
+    island_id = data['islandId']
     
     # Query the database to get all memories for the given user ID and island name
     # The query structure will depend on your database schema
     query = """
     SELECT id as memory_id, memory_name, memory_date, artifact_url, entry_detail
         FROM memories
-        WHERE user_id = '{}' AND island_name = '{}' AND archived = FALSE
-    """.format(user_id, island_name)
+        WHERE user_id = '{}' AND island_id = {} AND archived = FALSE
+    """.format(user_id, island_id)
     memories = db.getQueryDict(query)
 
     # Return the result as a JSON response
@@ -86,7 +86,6 @@ def getArchived():
     print(data)
     user_id = data['userId']
     
-    # Query the database to get all memories for the given user ID and island name
     # The query structure will depend on your database schema
     query = """
     SELECT id as memory_id, memory_name, memory_date, artifact_url, entry_detail

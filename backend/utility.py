@@ -36,19 +36,19 @@ def upload(file_stream, artifact_filename):
         print("duplicate file?")
     
         
-def checkMemoryCount(user_id, island_name):
+def checkMemoryCount(user_id, island_id):
     query = """
         SELECT COUNT(*) FROM memories
-        WHERE user_id = '{}' AND island_name = '{}' AND archived = FALSE;
-    """.format(user_id, island_name)
+        WHERE user_id = '{}' AND island_id = {} AND archived = FALSE;
+    """.format(user_id, island_id)
 
     result = db.getQuery(query)
     memory_count = result[0][0]  # fetch the count from the result
     return memory_count < 10
 
-def createMemory(user_id, island_name, memory_name, memory_date, entry_detail, artifact_url=''):
-    res=db.executeQuery("""insert into memories(user_id, island_name, memory_name, memory_date, artifact_url, entry_detail) 
-                              values({},'{}','{}','{}','{}','{}')""".format(user_id, island_name, memory_name, memory_date, artifact_url, entry_detail))
+def createMemory(user_id, island_id, memory_name, memory_date, entry_detail, artifact_url=''):
+    res=db.executeQuery("""insert into memories(user_id, island_id, memory_name, memory_date, artifact_url, entry_detail) 
+                              values('{}', {},'{}','{}','{}','{}')""".format(user_id, island_id, memory_name, memory_date, artifact_url, entry_detail))
     return res
 
 

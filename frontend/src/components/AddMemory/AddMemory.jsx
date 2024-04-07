@@ -4,7 +4,7 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
+import { getAuth, getIdToken } from "firebase/auth";
 
 
 function AddMemory() {
@@ -15,16 +15,52 @@ function AddMemory() {
   const [date,setDate] = useState(null);
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
 
-  const handleSaveChanges = () => {
-    // Implement logic to save changes
-    console.log('Title:', title);
-    console.log('Details:', details);
-    console.log('Image: ',image);
-    console.log('Date:', date);
-    console.log('Selected Category ID:', selectedCategoryId);
+  const auth = getAuth();
+  const user = auth.currentUser;
+  
 
-    // Close the dialog after saving changes
-    setIsDialogOpen(false);
+  const handleSaveChanges = async () => {
+    // Create FormData object to compile the form data
+    const formData = new FormData();
+    formData.append('memoryName', title);
+    formData.append('entryDetail', details);
+    formData.append('memoryDate', date ? date.toISOString() : ''); // Assuming `date` is a Date object or similar
+    // const token = await getIdToken(user);
+    // formData.append('userId', token);
+    formData.append('islandId', selectedCategoryId); 
+    if (image) formData.append('artifact', image); // 'artifact' is the field for the image file
+  
+    console.log(formData.get('islandId'));
+    // Construct the request options
+    const requestOptions = {
+      method: 'POST',
+      body: formData, // The body of the request is the FormData object
+      // Note: Don't manually set Content-Type for FormData; the browser will do it correctly
+    };
+  
+    try {
+      // Perform the fetch request to your API endpoint
+      const response = await fetch('/createMemory', requestOptions);
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      // Handle success
+      console.log("Memory created successfully:", data);
+      setIsDialogOpen(false); // Assuming you use this state to close a dialog or form
+  
+      // Optionally, clear the form fields or provide further user feedback
+      setTitle('');
+      setDetails('');
+      setDate(null);
+      setSelectedCategoryId(null);
+      setImage(null);
+    } catch (error) {
+      // Handle errors
+      console.error("Error creating memory:", error);
+      // Provide error feedback to the user
+    }
   };
 
   const handleImageChange = (e) => {
@@ -34,13 +70,12 @@ function AddMemory() {
 
   const handleDialogOpen = (isOpen, categoryId) => {
     setIsDialogOpen(isOpen);
-    setSelectedCategoryId(categoryId);
   };
 
   return (
     <div className="relative">
       
-      < SelectCategory setIsDialogOpen = {handleDialogOpen} />
+      < SelectCategory setIsDialogOpen = {handleDialogOpen} setSelectedCategoryId = {setSelectedCategoryId}/>
 
       {/* Dialog Overlay */}
       {isDialogOpen && ( 

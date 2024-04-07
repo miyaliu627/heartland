@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
 
-function SelectCategory({ setIsDialogOpen }) {
+function SelectCategory({ setIsDialogOpen, setSelectedCategoryId }) {
   const [isPopupMenuOpen, setIsPopupMenuOpen] = useState(false);
-  const [selectedcategoryId, setSelectedCategoryId] = useState(null);
 
   const handleCategorySelect = (categoryId) => {
-    setSelectedCategoryId(categoryId);
+    console.log(`Selected Category ID: ${categoryId}`);
+    setSelectedCategoryId(categoryId); // This will update the state in the parent component
     setIsPopupMenuOpen(false);
-    setIsDialogOpen(true, categoryId);
+    setIsDialogOpen(true); // Assuming you want to open a dialog without passing categoryId here
   };
 
   const handleAddMemoryClick = () => {
     setIsPopupMenuOpen(true);
-  };
-
-  const handleCancel = () => {
-    setIsDialogOpen(false);
   };
 
   return (
@@ -27,7 +23,6 @@ function SelectCategory({ setIsDialogOpen }) {
         Add Memory
       </button>
 
-      {/* Popup Menu */}
       {isPopupMenuOpen && (
         <div className="fixed top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-4 rounded-lg shadow-lg">
@@ -35,25 +30,25 @@ function SelectCategory({ setIsDialogOpen }) {
             <div className="grid grid-cols-2 gap-4">
               <button
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                onClick={() => handleCategorySelect('personal')}
+                onClick={() => handleCategorySelect('1')}
               >
                 Personal
               </button>
               <button
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                onClick={() => handleCategorySelect('family')}
+                onClick={() => handleCategorySelect('2')}
               >
                 Family
               </button>
               <button
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                onClick={() => handleCategorySelect('work')}
+                onClick={() => handleCategorySelect('3')}
               >
                 Work
               </button>
               <button
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                onClick={() => handleCategorySelect('community')}
+                onClick={() => handleCategorySelect('4')}
               >
                 Community
               </button>

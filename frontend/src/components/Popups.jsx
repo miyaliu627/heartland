@@ -6,7 +6,20 @@ const Popups = ({ currentStage }) => {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
-                    Welcome to the Personal/Cultural Island!
+                    Welcome to Heartland
+                </p>
+                <button className='neo-brutalism-white neo-btn'>
+                    Scroll
+                    <img src={arrow} alt='arrow' className='w-3 h-3 object-contain' />
+                </button>
+            </div>
+        );
+
+    if (currentStage === 2)
+        return (
+            <div className='info-box'>
+                <p className='font-medium sm:text-xl text-center'>
+                    Welcome to Companion Island!
                 </p>
                 <button className='neo-brutalism-white neo-btn'>
                     Enter Island
@@ -15,7 +28,7 @@ const Popups = ({ currentStage }) => {
             </div>
         );
 
-    if (currentStage === 2) {
+    if (currentStage === 3) {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
@@ -29,7 +42,7 @@ const Popups = ({ currentStage }) => {
         );
     }
 
-    if (currentStage === 3) {
+    if (currentStage === 4) {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
@@ -43,11 +56,25 @@ const Popups = ({ currentStage }) => {
         );
     }
 
-    if (currentStage === 4) {
+    if (currentStage === 5) {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
                     Welcome to the Community Island!
+                </p>
+                <button className='neo-brutalism-white neo-btn'>
+                    Enter Island
+                    <img src={arrow} alt='arrow' className='w-3 h-3 object-contain' />
+                </button>
+            </div>
+        );
+    }
+
+    if (currentStage === 6) {
+        return (
+            <div className='info-box'>
+                <p className='font-medium sm:text-xl text-center'>
+                    Welcome to the Archive Island!
                 </p>
                 <button className='neo-brutalism-white neo-btn'>
                     Enter Island

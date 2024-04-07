@@ -74,7 +74,7 @@ const Popups = ({ currentStage }) => {
         return (
             <div className='info-box'>
                 <p className='font-medium sm:text-xl text-center'>
-                    Welcome to Archive Island!
+                    Welcome to the Archival Island!
                 </p>
                 <button className='neo-brutalism-white neo-btn'>
                     Enter Island

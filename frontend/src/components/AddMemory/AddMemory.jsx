@@ -25,12 +25,11 @@ function AddMemory() {
     formData.append('memoryName', title);
     formData.append('entryDetail', details);
     formData.append('memoryDate', date ? date.toISOString() : ''); // Assuming `date` is a Date object or similar
-    // const token = await getIdToken(user);
-    // formData.append('userId', token);
+    const token = await getIdToken(user);
+    formData.append('userId', token);
     formData.append('islandId', selectedCategoryId); 
     if (image) formData.append('artifact', image); // 'artifact' is the field for the image file
   
-    console.log(formData.get('islandId'));
     // Construct the request options
     const requestOptions = {
       method: 'POST',
@@ -40,14 +39,14 @@ function AddMemory() {
   
     try {
       // Perform the fetch request to your API endpoint
-      const response = await fetch('/createMemory', requestOptions);
+      const response = await fetch('http://127.0.0.1:5000/createMemory', requestOptions);
   
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
   
       // Handle success
-      console.log("Memory created successfully:", data);
+      console.log("Memory created successfully");
       setIsDialogOpen(false); // Assuming you use this state to close a dialog or form
   
       // Optionally, clear the form fields or provide further user feedback

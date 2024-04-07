@@ -25,8 +25,8 @@ def createMemory():
         return json.dumps({"error": "Memory limit reached for this island."}), 400
 
     # Handling file upload
-    artifact = request.files['artifact']
     
+    artifact = request.files.get('artifact') 
     if artifact:
         artifact_filename = artifact.filename  # Or generate a new filename to avoid conflicts
         # Ensure you have configured Azure connection string and container name in your upload utility

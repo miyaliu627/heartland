@@ -52,7 +52,7 @@ const Popups = ({ currentStage }) => {
             {showIsland && currentStage !== 0 && (
                 <>
                     <IslandMapView islandId={currentStage} islandImage={islandImages[currentStage]}/>
-                    <button onClick={() => setShowIsland(false)} className='neo-brutalism-white neo-btn'>
+                    <button onClick={() => setShowIsland(false)} className='className="w-full p-3 text-sm font-bold tracking-wide uppercase rounded border border-blue-400 bg-blue-300 text-white hover:bg-blue-600 hover:border-blue-600"'>
                         Close
                     </button>
                 </>

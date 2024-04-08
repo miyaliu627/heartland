@@ -26,8 +26,8 @@ function MemoryData(title, image, text)
 
 export default function IslandPopup({memories, islandImage})
 { 
-    const xs = [200, 430, 200, 560];
-    const ys = [120, 260, 400, 77];
+    const xs = [200, 430, 200, 560, 120, 55, 260];
+    const ys = [120, 260, 400, 77, 230, 104, 453];
 
     // console.log(memories)
 
@@ -44,6 +44,7 @@ export default function IslandPopup({memories, islandImage})
         <MemoryCard 
             key={i}
             index={i}
+            memoryIndex={i}
             x={xs[i % xs.length]}
             y={ys[i % ys.length]}
             handleOpen={() => setDisplayModal(i)}
@@ -56,7 +57,7 @@ export default function IslandPopup({memories, islandImage})
         <>
         <div class="container">
     <div class="large-image-container">
-        <img src={islandImage} alt="Large Image" class="large-image"></img>
+        <img src={islandImage} alt="Large Image" class="large-image block shadow-lg"></img>
         </div>
         
         {memoryCards}

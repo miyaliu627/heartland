@@ -56,3 +56,4 @@ const Modal = ({ isOpen, onClose, image, title, date, text, memory_id }) => {
 };
 
 export default Modal;
+
